@@ -156,3 +156,12 @@ body{
     margin-left: 0px;
  }
 }
+
+.css-panel{
+    width: 750px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
