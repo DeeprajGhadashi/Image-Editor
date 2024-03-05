@@ -8,6 +8,9 @@ const loadImage = ()=> {
     if(!file) return; //return if user hasn't selected file
     previewImg.src = URL.createObjectURL(file);   
     // console.log(file);
+    previewImg.addEventListener('load',()=> {
+        document.querySelector('.container').classList.remove('disable')   // all .editor-panel, .reset-filter,.save-img,.css-panel open after image selected
+    });
 }
 
 fileInput.addEventListener("change", loadImage);
