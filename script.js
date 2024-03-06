@@ -23,6 +23,7 @@ const loadImage = ()=> {
     previewImg.src = URL.createObjectURL(file);   
     // console.log(file);
     previewImg.addEventListener('load',()=> {
+        resetFilterBtn.click(); //clicking reset btn, so the filter value reset if the user select new img
         document.querySelector('.container').classList.remove('disable')   // all .editor-panel, .reset-filter,.save-img,.css-panel open after image selected
     });
 }
