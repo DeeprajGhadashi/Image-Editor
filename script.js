@@ -91,6 +91,7 @@ const resetFilter = () => {
     // resetting all variable value to its default value
      brightness = 100; saturation = 100; inversion = 0 ; grayscale = 0;
      rotate = 0; flipHorizontal = 1; flipVertical = 1;
+     filterOptions[0].click(); //clicking brightness btn, so the brightness selected by default
      applyFilters();
 }
 
