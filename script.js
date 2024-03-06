@@ -72,7 +72,9 @@ rotateOptions.forEach(option => {
      //console.log(option);
      if(option.id === 'left'){
       rotate -= 90;  //clicked btn is left rotate, decrement rotate value by -90
-     }
+     }else if(option.id === 'right'){
+        rotate += 90;  //clicked btn is right rotate, increment rotate value by +90
+       }
      applyFilters();
     });
 });
