@@ -6,8 +6,8 @@ rotateOptions = document.querySelectorAll('.rotate button'),
 filterSlider = document.querySelector('.slider input'),
 previewImg = document.querySelector('.preview-img img'),
 resetFilterBtn = document.querySelector('.reset-filter'),
-chooseImgBtn = document.querySelector('.choose-img');
-
+chooseImgBtn = document.querySelector('.choose-img'),
+saveImgBtn = document.querySelector('.save-img');
 
 let brightness = 100, saturation = 100, inversion = 0 , grayscale = 0;
 let rotate = 0, flipHorizontal = 1, flipVertical = 1;
@@ -95,7 +95,32 @@ const resetFilter = () => {
      applyFilters();
 }
 
+const saveImage = () => {
+   // console.log("save image btn clicked");
+   const canvas = document.createElement("canvas"); //creating canvas element
+   const ctx = canvas.getContext("2d"); //canvas.getContext return a drawing context on the canvas
+   canvas.width = previewImg.naturalWidth; //setting canvas width to actual image width
+   canvas.height = previewImg.naturalHeight; // setting canvas height to actual image height
+
+   //appling user selected filters to canvas filter
+   ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
+   ctx.translate( canvas.width / 2 , canvas.height / 2) ; //translating canvas from center
+   if(rotate !== 0) {
+    ctx.rotate(rotate * Math.PI / 180);
+   }
+   ctx.scale(flipHorizontal, flipVertical ); //flip canvas Horizontal / Vertical 
+   ctx.drawImage(previewImg , -canvas.width / 2 , -canvas.height / 2, canvas.width, canvas.height);
+   // document.body.appendChild(canvas);  //image show in user interface
+
+   const link = document.createElement('a'); //create <a> element
+   link.download = `ImageEditor${Date.now()}.jpg`; // passing <a> tag download value to "image.jpg"
+   link.href = canvas.toDataURL(); // passing <a> tag href value to canvas data url
+   link.click(); //clicking <a> tag image download
+
+}
+
 fileInput.addEventListener("change", loadImage);
 filterSlider.addEventListener('input', updateFilter);
 resetFilterBtn.addEventListener('click', resetFilter);
+saveImgBtn.addEventListener('click', saveImage);
 chooseImgBtn.addEventListener('click', ()=> fileInput.click());   //file-input as image on click choose img button
