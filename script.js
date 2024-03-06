@@ -77,6 +77,9 @@ rotateOptions.forEach(option => {
      }else if(option.id === 'horizontal'){
         // if flipHorizontal value is 1, set this value to -1 else set 1
        flipHorizontal = flipHorizontal === 1 ? -1 : 1;
+     }else {
+        // if flipVertical value is 1, set this value to -1 else set 1
+       flipVertical = flipVertical === 1 ? -1 : 1;
      }
      applyFilters();
     });
