@@ -9,9 +9,13 @@ One of the standout features of this editor is its ability to dynamically genera
 ## Key Features 
 
 Apply filters: Grayscale, Inversion, Saturation, Brightness, Blur, Contrast, Opacity
+
 Rotate and Flip images for creative freedom
+
 View real-time CSS code for applied filters
+
 Save your edited images effortlessly
+
 Reset all filters with a single click
 
 ## LinkedIn Profile
