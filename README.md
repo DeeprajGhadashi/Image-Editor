@@ -6,7 +6,7 @@ With the Image Editor, users can now bring their photos to life by applying a va
 
 One of the standout features of this editor is its ability to dynamically generate CSS code for each applied filter. This not only enhances user experience but also provides a deeper understanding of how CSS filters work under the hood. 💡
 
-# Key Features 
+## Key Features 
 
 Apply filters: Grayscale, Inversion, Saturation, Brightness, Blur, Contrast, Opacity
 Rotate and Flip images for creative freedom
