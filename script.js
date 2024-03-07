@@ -35,124 +35,52 @@ filterOptions.forEach(option => {
         option.classList.add('active');
         filterName.innerText = option.innerText;
 
-        switch (option.id) {
-            case 'brightness':
-                filterSlider.max = '200';
-                filterSlider.value = brightness;
-                filterValue.innerText = `${brightness}%`;
-                document.querySelector('.css-panel').innerHTML = `
-                    <span style="color: #00ff59;">img &nbsp;</span> 
-                    { 
-                        &nbsp;&nbsp;
-                        <span style="color: white;">filter &nbsp;:</span> 
-                        <span style="color: blue;">&nbsp;&nbsp; brightness</span> 
-                        <span style="color: #ff5500;">&nbsp;(${brightness / 200})</span>
-                        <span style="color: white;"> ; </span>
-                        &nbsp;&nbsp;
-                        <span style="color: white;">}</span>
-                `;
-                break;
-            case 'saturation':
-                filterSlider.max = '200';
-                filterSlider.value = saturation;
-                filterValue.innerText = `${saturation}%`;
-                document.querySelector('.css-panel').innerHTML = `
-                    <span style="color: #00ff59;">img &nbsp;</span> 
-                    { 
-                        &nbsp;&nbsp;
-                        <span style="color: white;">filter &nbsp;:</span> 
-                        <span style="color: blue;">&nbsp;&nbsp; saturate</span>
-                        <span style="color: #ff5500;">&nbsp;(${saturation}%)</span>
-                        <span style="color: white;"> ; </span>
-                        &nbsp;&nbsp;
-                        <span style="color: white;">}</span>
-                `;
-                break;
-            case 'inversion':
-                filterSlider.max = '100';
-                filterSlider.value = inversion;
-                filterValue.innerText = `${inversion}%`;
-                document.querySelector('.css-panel').innerHTML = `
-                    <span style="color: #00ff59;">img &nbsp;</span> 
-                    { 
-                        &nbsp;&nbsp;
-                        <span style="color: white;">filter &nbsp;:</span> 
-                        <span style="color: blue;">&nbsp;&nbsp; invert</span>
-                        <span style="color: #ff5500;">&nbsp;(${inversion}%)</span>
-                        <span style="color: white;"> ; </span>
-                        &nbsp;&nbsp;
-                        <span style="color: white;">}</span>
-                `;
-                break;
-            case 'contrast':
-                filterSlider.max = '200';
-                filterSlider.value = contrast;
-                filterValue.innerText = `${contrast}%`;
-                
-                document.querySelector('.css-panel').innerHTML = `
-                    
-                    <span style="color: #00ff59;">img &nbsp;</span> 
-                    { 
-                        &nbsp;&nbsp;
-                        <span style="color: white;">filter &nbsp;:</span> 
-                        <span style="color: blue;">&nbsp;&nbsp; contrast</span>
-                        <span style="color: #ff5500;">&nbsp;(${contrast}%)</span>
-                        <span style="color: white;"> ; </span>
-                        &nbsp;&nbsp;
-                        <span style="color: white;">}</span>
-                `;
-                break;
-            case 'opacity':
-                filterSlider.max = '100';
-                filterSlider.value = opacity;
-                filterValue.innerText = `${opacity}%`;
-                document.querySelector('.css-panel').innerHTML = `
-                    <span style="color: #00ff59;">img &nbsp;</span> 
-                    { 
-                        &nbsp;&nbsp;
-                        <span style="color: white;">filter &nbsp;:</span> 
-                        <span style="color: blue;">&nbsp;&nbsp; opacity</span>
-                        <span style="color: #ff5500;">&nbsp;(${opacity}%)</span>
-                        <span style="color: white;"> ; </span>
-                        &nbsp;&nbsp;
-                        <span style="color: white;">}</span>
-                `;
-                break;
-            case 'blur':
-                filterSlider.max = '10';
-                filterSlider.value = blur;
-                filterValue.innerText = `${blur}px`;
-                document.querySelector('.css-panel').innerHTML = `
-                    <span style="color: #00ff59;">img &nbsp;</span> 
-                    { 
-                        &nbsp;&nbsp;
-                        <span style="color: white;">filter &nbsp;:</span> 
-                        <span style="color: blue;">&nbsp;&nbsp; blur</span>
-                        <span style="color: #ff5500;">&nbsp;(${blur}px)</span>
-                        <span style="color: white;"> ; </span>
-                        &nbsp;&nbsp;
-                        <span style="color: white;">}</span>
-                `;
-                break;
-            default:
-                filterSlider.max = '100';
-                filterSlider.value = grayscale;
-                filterValue.innerText = `${grayscale}%`;
-                document.querySelector('.css-panel').innerHTML = `
-                    <span style="color: #00ff59;">img &nbsp;</span> 
-                    { 
-                        &nbsp;&nbsp;
-                        <span style="color: white;">filter &nbsp;:</span> 
-                        <span style="color: blue;">&nbsp;&nbsp; grayscale</span>
-                        <span style="color: #ff5500;">&nbsp;(${grayscale}%)</span>
-                        <span style="color: white;"> ; </span>
-                        &nbsp;&nbsp;
-                        <span style="color: white;">}</span>
-                `;
-                break;
-        }
+        filterSlider.addEventListener('input', () => {
+            let sliderValue = filterSlider.value;
+            let filterText = '';
         
-
+            switch (filterSlider.id) {
+                case 'brightness':
+                    filterText = `brightness(${sliderValue / 200})`;
+                    break;
+                case 'saturation':
+                    filterText = `saturate(${sliderValue}%)`;
+                    break;
+                case 'inversion':
+                    filterText = `invert(${sliderValue}%)`;
+                    break;
+                case 'contrast':
+                    filterText = `contrast(${sliderValue}%)`;
+                    break;
+                case 'opacity':
+                    filterText = `opacity(${sliderValue}%)`;
+                    break;
+                case 'blur':
+                    filterText = `blur(${sliderValue}px)`;
+                    break;
+                case 'grayscale':
+                    filterText = `grayscale(${sliderValue}%)`;
+                    break;
+                default:
+                    break;
+            }
+        
+            filterValue.innerText = `${sliderValue}%`;
+            document.querySelector('.css-panel').innerHTML = `
+                <span style="color: #00ff59;">img &nbsp;</span> 
+                { 
+                    &nbsp;&nbsp;
+                    <span style="color: white;">filter &nbsp;:</span> 
+                    <span style="color: blue;">&nbsp;&nbsp; ${filterSlider.id}</span>
+                    <span style="color: #ff5500;">&nbsp;(${sliderValue})</span>
+                    <span style="color: white;"> ; </span>
+                    &nbsp;&nbsp;
+                    <span style="color: white;">}</span>
+            `;
+        
+            updateFilter(); // Call the function to apply filters
+        });
+        
     })
 })
 
