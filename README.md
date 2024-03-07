@@ -37,3 +37,6 @@ JavaScript
 
 ## Hashtags
 #imageediting #javascript #javascriptlearning #html #css #webdevelopment #photoediting #creativetools
+
+![image](https://github.com/DeeprajGhadashi/Image-Editor/assets/129051845/17c0a96d-a573-4d5a-aa13-62e3dfa55f19)![image](https://github.com/DeeprajGhadashi/Image-Editor/assets/129051845/d4943473-c1d4-474f-bc91-d59ae7e9a038)
+
