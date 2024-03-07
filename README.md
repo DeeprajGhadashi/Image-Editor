@@ -26,7 +26,9 @@ This project was a labor of love, and I'm excited to share it with you all! Give
 
 ## Technologies Used
 HTML
+
 CSS
+
 JavaScript
 
 ## Hashtags
